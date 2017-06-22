@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
-var UserSchema = new Schema({
+const UserSchema = new Schema({
   name: {
     type: String,
     unique: true,
@@ -15,7 +15,7 @@ var UserSchema = new Schema({
 });
 
 UserSchema.pre('save', function (next) {
-  var user = this;
+  const user = this;
   if (this.isModified('password') || this.isNew) {
 
     bcrypt.genSalt(10, (saltErr, salt) => {
